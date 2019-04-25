@@ -1,0 +1,47 @@
+#info_boks {
+  text-align: left;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  color: #000000;
+}
+h2 {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+h3 {
+  text-align: right;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+}
+h4 {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.divider {
+  width: 15%;
+  background: #353a3f;
+  border: 1px solid #353a3f;
+}
+#button {
+  position: relative;
+  float: right;
+  margin-bottom: 20px;
+}
+#important {
+  text-align: left;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  color: #000000;
+}
+
+
