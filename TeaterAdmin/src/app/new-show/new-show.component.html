@@ -1,0 +1,62 @@
+<div class="col-sm-9">
+  <div class="card">
+    <div class="card-body">
+      <p class="info_info"> <b>Opret forstilling</b></p>
+      <hr>
+      <p class="info_text"> Opret en forstilling nedenfor</p>
+      <div class="row">
+        <div class="col-xs-12 col-12 col-md-9 form-group">
+          <div class="form-group">
+            <label for="usr">Forstillingens navn:</label>
+            <input type="text" class="form-control" id="usr">
+          </div>
+          <div class="form-group">
+            <label for="price">Pris på forstillingen:</label>
+            <input type="text" class="form-control" id="price">
+          </div>
+          <div class="form-group">
+            <label for="comment">Tilføj beskrivelse af stykket:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-12 col-12 col-md-9 form-group">
+          <input type="text" placeholder=" Vælg premieredag" class="bs-datepicker " bsDatepicker>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-xs-12 col-12 col-md-9 form-group">
+            <input type="text" placeholder=" Vælg sidste show" class="bs-datepicker " bsDatepicker>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+        Opret forstilling
+      </button>
+
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h4 class="modal-title">Forstillingen er oprettet</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+              Forstillingen er nu blevet oprettet, og er klar til at blive vist på hjemmesiden.
+            </div>
+
+            <div class="modal-footer">
+              <button  routerLink="/welcome-page" type="button" class="btn btn-secondary" data-dismiss="modal">Luk</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

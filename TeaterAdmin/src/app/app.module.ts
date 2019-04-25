@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TestComponentComponent } from './test-component/test-component.component';
 import {DropdownDirective} from './welcome-page/dropdown.directive';
+import {AppRoutingModule} from './app-routing.module';
+import { NewShowComponent } from './new-show/new-show.component';
+
 
 @NgModule({
   declarations: [
@@ -21,12 +24,14 @@ import {DropdownDirective} from './welcome-page/dropdown.directive';
     LoginComponent,
     WelcomePageComponent,
     TestComponentComponent,
-    DropdownDirective
+    DropdownDirective,
+    NewShowComponent
   ],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
