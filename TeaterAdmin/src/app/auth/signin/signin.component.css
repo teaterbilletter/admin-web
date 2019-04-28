@@ -3,6 +3,7 @@
   font-size: 14px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5px;
   color: #000000;
 }
 h2 {
@@ -33,6 +34,7 @@ h4 {
   position: relative;
   float: right;
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 #important {
   text-align: left;

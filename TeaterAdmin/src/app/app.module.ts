@@ -13,6 +13,10 @@ import { TestComponentComponent } from './test-component/test-component.componen
 import {DropdownDirective} from './welcome-page/dropdown.directive';
 import {AppRoutingModule} from './app-routing.module';
 import { NewShowComponent } from './new-show/new-show.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {TabsModule} from 'ngx-bootstrap';
+import {AuthService} from './auth/auth.service';
 
 
 @NgModule({
@@ -25,15 +29,18 @@ import { NewShowComponent } from './new-show/new-show.component';
     WelcomePageComponent,
     TestComponentComponent,
     DropdownDirective,
-    NewShowComponent
+    NewShowComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TabsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
