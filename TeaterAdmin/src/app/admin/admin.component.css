@@ -1,0 +1,26 @@
+.btn{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #353a3f;
+}
+
+.drop{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.form-group{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  background-color: #353a3f;
+  opacity: 1; /* Firefox */
+}
