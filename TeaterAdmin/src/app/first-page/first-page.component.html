@@ -1,0 +1,41 @@
+<div class="container">
+  <h3>Velkommen</h3>
+  <hr>
+  <p class="welcome"> Du er nu logget ind som administrator på hjemmesiden. <br>Du kan nu vælge følgende muligheder nedenfor:</p>
+  <hr>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <p>Vælge forestilling</p>
+          <hr>
+          <div class="row">
+            <div class="btn-group col-xs-6 col-md-5 marginBottom">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Vælg forstilling
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" (click)="onDropDownElementPressed()">
+                <a class="dropdown-item">Phantom of the opera</a>
+                <a class="dropdown-item">Jeppe på Bjerget</a>
+                <a class="dropdown-item">Nødeknækkeren</a>
+              </div>
+            </div>
+
+            <div class="col-xs-3 col-md-5 marginBottom">
+              <input type="text" class="form-control" placeholder="Vælg dato" bsDatepicker>
+            </div>
+
+            <div class="col-xs-3 col-md-2 marginBottom">
+              <button type="button" class="btn btn-secondary" (click)="onDropDownElementPressed()">Vis</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

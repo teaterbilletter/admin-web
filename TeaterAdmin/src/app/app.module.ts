@@ -17,6 +17,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {TabsModule} from 'ngx-bootstrap';
 import {AuthService} from './auth/auth.service';
+import { AvailableShowsComponent } from './available-shows/available-shows.component';
+import { FirstPageComponent } from './first-page/first-page.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import {AuthService} from './auth/auth.service';
     DropdownDirective,
     NewShowComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    AvailableShowsComponent,
+    FirstPageComponent
   ],
   imports: [
     BrowserModule,

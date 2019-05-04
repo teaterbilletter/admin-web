@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 @Component({
-  selector: 'app-welcome-page',
-  templateUrl: './welcome-page.component.html',
-  styleUrls: ['./welcome-page.component.css']
+  selector: 'app-first-page',
+  templateUrl: './first-page.component.html',
+  styleUrls: ['./first-page.component.css']
 })
-export class WelcomePageComponent implements OnInit {
+export class FirstPageComponent implements OnInit {
 
   dates = [{dateForShow: 'a date'}];
 
   public showAvailableTimes = false;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   onDropDownElementPressed() {
     console.log("pressed");
@@ -28,4 +23,8 @@ export class WelcomePageComponent implements OnInit {
     });
     console.log(dateSelect);
   }
+
+  ngOnInit(): void {
+  }
+
 }

@@ -1,0 +1,16 @@
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.card:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2); ;
+}
+
+.card-title{
+  font-size: 200%;
+}

@@ -1,82 +1,26 @@
-<h3>Velkommen</h3>
-<hr>
-<p id="welcome_text"> Du er nu logget ind som administrator på hjemmesiden.
-<br>Du kan nu vælge følgende muligheder nedenfor:</p>
-
-
-
-
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="info_info"><b>Vælg forestilling</b></p>
-          <hr>
-          <div class="btn-group">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Vælg forstilling
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Phantom of the opera</a>
-                <a class="dropdown-item" href="#">Jeppe på Bjerget</a>
-                <a class="dropdown-item" href="#">Nødeknækkeren</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <h3>Velkommen</h3>
+  <hr>
+  <p class="welcome"> Du er nu logget ind som administrator på hjemmesiden. <br>Du kan nu vælge følgende muligheder nedenfor:</p>
 
-
-
-    <div class="col-sm-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="info_info"> <b>Vælg dato</b></p>
-          <hr>
-          <p class="info_text"> Brug kalenderen til at vælge dato.</p>
-
-
+  <div class="col-xs-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-text">Skriv noget lort her</div>
           <div class="row">
-            <div class="col-xs-12 col-12 col-md-9 form-group">
-              <input type="text" placeholder="Vælg dato" class="form-control rounded_corner" bsDatepicker>
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-secondary">Secondary</button>
+            </div>
+
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-secondary">Secondary</button>
+            </div>
+
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-secondary">Secondary</button>
             </div>
           </div>
-        </div>
-      </div>
-  </div>
-
-
-
-    <div class="col-sm-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="info_info"><b>Opret ny forstilling</b></p>
-          <hr>
-          <div class="btn2">
-          <button routerLink="/new-show" class="btn btn-secondary">Opret forstilling</button>
-          </div>
-            </div>
-          </div>
-        </div>
-
-    <div class="col-sm-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="info_info"><b>Opret administrator</b></p>
-          <hr>
-          <div class="btn2">
-            <button routerLink="/signup" class="btn btn-secondary">Opret administrator</button>
-          </div>
-        </div>
       </div>
     </div>
-
-    <button routerLink="/signin" class="btn btn-secondary">Logud</button>
-
-
-
-
-
+  </div>
+</div>
