@@ -16,6 +16,10 @@ export class FirstPageComponent implements OnInit {
     this.showAvailableTimes = true;
   }
 
+  getDropDownElementPressed() {
+    return this.showAvailableTimes;
+  }
+
   onDateSelected(dateSelect: {dates: string}) {
     this.dates.push({
       dateForShow: dateSelect.dates

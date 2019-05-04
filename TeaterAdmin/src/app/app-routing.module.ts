@@ -12,9 +12,7 @@ import {AuthGuardService} from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: SigninComponent, pathMatch: 'full' },
-  {path: 'login ', component: LoginComponent },
   {path: 'first-page', component: FirstPageComponent, canActivate:[AuthGuardService]},
-  {path: 'welcome-page', component: WelcomePageComponent, canActivate:[AuthGuardService]},
   {path: 'new-show', component: NewShowComponent, canActivate:[AuthGuardService]},
   {path: 'signup', component: SignupComponent, canActivate:[AuthGuardService]},
   {path: 'signin', component: SigninComponent},

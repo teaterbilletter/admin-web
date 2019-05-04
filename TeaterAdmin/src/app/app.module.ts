@@ -22,6 +22,7 @@ import { FirstPageComponent } from './first-page/first-page.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Intercept} from './intercepter';
+import {UserService} from './user.service';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {Intercept} from './intercepter';
       multi: true
     },
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

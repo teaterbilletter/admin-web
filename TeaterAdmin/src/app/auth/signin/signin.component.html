@@ -22,13 +22,13 @@
                     <form >
                       <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id ="email" name="email" ngModel class="form-control">
+                        <input type="email" id ="email" name="email" ngModel class="form-control" #name>
                       </div>
                       <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id ="password" name="password" ngModel class="form-control">
+                        <input type="password" id ="password" name="password" ngModel class="form-control" #password>
                       </div>
-                      <button routerLink="/welcome-page" class="btn btn-dark" type="submit"  style="float: right">Log ind</button>
+                      <button routerLink="/first-page" class="btn btn-dark" type="submit" style="float: right" (click)="onLoginPressed(name.value, password.value)">Log ind</button>
                     </form>
                 </div>
             <hr class="my-4">

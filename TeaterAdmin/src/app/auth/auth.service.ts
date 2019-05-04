@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import {HttpClient} from '@angular/common/http';
+import {UserService} from '../user.service';
 
 export const TOKEN_NAME = 'jwt_token';
+
+interface LoginResult {
+  response: string,
+  token?: string;
+}
 
 @Injectable()
 export class AuthService {
 
-  private url = 'api/auth';
+  private url = 'https://ticket.northeurope.cloudapp.azure.com/Login';
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient, private userService: UserService) { }
 
   getToken(): string {
     return localStorage.getItem(TOKEN_NAME);
@@ -38,9 +44,13 @@ export class AuthService {
     return !(date.valueOf() > new Date().valueOf());
   }
 
-  login(user) {
-    this.client.get(this.url).subscribe(result => {
-      console.log(result);
+  login(name: string, password: string) {
+    this.client.post<LoginResult>(this.url, {name, password}).subscribe((result: LoginResult) => {
+      this.setToken(result.token);
+      this.userService.setUserName(result.response);
+    }, error => {
+      console.log(error.error);
+      window.alert(error.error);
     });
   }
 
