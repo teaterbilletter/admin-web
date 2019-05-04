@@ -19,6 +19,9 @@ import {TabsModule} from 'ngx-bootstrap';
 import {AuthService} from './auth/auth.service';
 import { AvailableShowsComponent } from './available-shows/available-shows.component';
 import { FirstPageComponent } from './first-page/first-page.component';
+import {AuthGuardService} from './auth/auth-guard.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {Intercept} from './intercepter';
 
 
 @NgModule({
@@ -42,9 +45,18 @@ import { FirstPageComponent } from './first-page/first-page.component';
     BsDatepickerModule.forRoot(),
     FormsModule,
     AppRoutingModule,
-    TabsModule
+    TabsModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Intercept,
+      multi: true
+    },
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

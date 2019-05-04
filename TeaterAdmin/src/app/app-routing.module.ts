@@ -7,17 +7,18 @@ import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {AvailableShowsComponent} from './available-shows/available-shows.component';
 import {FirstPageComponent} from './first-page/first-page.component';
+import {AuthGuardService} from './auth/auth-guard.service';
 
 
 const appRoutes: Routes = [
   {path: '', component: SigninComponent, pathMatch: 'full' },
   {path: 'login ', component: LoginComponent },
-  {path: 'first-page', component: FirstPageComponent},
-  {path: 'welcome-page', component: WelcomePageComponent },
-  {path: 'new-show', component: NewShowComponent},
-  {path: 'signup', component: SignupComponent },
+  {path: 'first-page', component: FirstPageComponent, canActivate:[AuthGuardService]},
+  {path: 'welcome-page', component: WelcomePageComponent, canActivate:[AuthGuardService]},
+  {path: 'new-show', component: NewShowComponent, canActivate:[AuthGuardService]},
+  {path: 'signup', component: SignupComponent, canActivate:[AuthGuardService]},
   {path: 'signin', component: SigninComponent},
-  {path: 'a-s', component: AvailableShowsComponent}
+  {path: 'a-s', component: AvailableShowsComponent, canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
