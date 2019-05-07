@@ -23,6 +23,7 @@ import {AuthGuardService} from './auth/auth-guard.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Intercept} from './intercepter';
 import {UserService} from './user.service';
+import { NewTeaterComponent } from './new-teater/new-teater.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {UserService} from './user.service';
     SignupComponent,
     SigninComponent,
     AvailableShowsComponent,
-    FirstPageComponent
+    FirstPageComponent,
+    NewTeaterComponent
   ],
   imports: [
     BrowserModule,

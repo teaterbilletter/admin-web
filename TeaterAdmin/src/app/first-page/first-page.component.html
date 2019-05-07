@@ -18,9 +18,7 @@
                 Vælg forstilling
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" (click)="onDropDownElementPressed()">
-                <a class="dropdown-item">Phantom of the opera</a>
-                <a class="dropdown-item">Jeppe på Bjerget</a>
-                <a class="dropdown-item">Nødeknækkeren</a>
+                <a class="dropdown-item" *ngFor="let show of shows">{{show.title}}</a>
               </div>
             </div>
 
@@ -47,6 +45,20 @@
         <div class="card-body">
           <p>Opret ny forstilling</p>
           <button routerLink="/new-show" type="button" class="btn btn-secondary">Opret forstilling</button>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 marginBottom">
+      <div class="card">
+        <div class="card-body">
+          <p>Opret nyt teater</p>
+          <button routerLink="/n-t" type="button" class="btn btn-secondary">Opret nyt teater</button>
           <hr>
         </div>
       </div>

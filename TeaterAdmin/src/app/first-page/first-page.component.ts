@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {UserService} from '../user.service';
+import {HttpClient} from '@angular/common/http';
+import {Show} from '../model/show';
+import {ShowService} from '../services/show.service';
+import {Booking} from '..';
+
 
 @Component({
   selector: 'app-first-page',
@@ -11,15 +16,18 @@ export class FirstPageComponent implements OnInit {
 
   dates = [{dateForShow: 'a date'}];
 
+  public shows: Array<Show>;
+  public diplayShows: Show;
+
   public showAvailableTimes = false;
+  private AllShowsUrl = 'https://ticket.northeurope.cloudapp.azure.com:5443/AllShows';
 
-  constructor(private authService: AuthService, private userService: UserService) {
-
+  constructor(private authService: AuthService, private userService: UserService, private showService: ShowService, private client: HttpClient) {
   }
 
 
   onDropDownElementPressed() {
-    console.log("pressed");
+    console.log('pressed');
     this.showAvailableTimes = true;
   }
 
@@ -36,7 +44,14 @@ export class FirstPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('NICOLAS SIGER MAN IK MÅ SIGE FUCK ' + this.userService.getUserName());
+
+
+    this.showService.getAllShows().subscribe((shows: Show[]) => {
+      this.shows = shows;
+      console.log(shows);
+
+    });
+
   }
 
   getUserName() {
@@ -50,5 +65,7 @@ export class FirstPageComponent implements OnInit {
   onLogout() {
     localStorage.clear();
   }
+
+
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Show} from '..';
 
 @Component({
   selector: 'app-available-shows',
@@ -14,6 +15,8 @@ export class AvailableShowsComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
+
 
 }
