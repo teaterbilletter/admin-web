@@ -1,11 +1,9 @@
 export class UserService {
-  private userName: string;
-
   public setUserName(name: string) {
-    this.userName = name;
+    localStorage.setItem('userName', name);
   }
 
   public getUserName() {
-    return this.userName;
+    return localStorage.getItem('userName');
   }
 }

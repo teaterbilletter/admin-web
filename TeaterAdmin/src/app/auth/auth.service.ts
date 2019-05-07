@@ -13,13 +13,16 @@ interface LoginResult {
 @Injectable()
 export class AuthService {
 
-  private url = 'https://ticket.northeurope.cloudapp.azure.com/Login';
+
+  private url = 'https://ticket.northeurope.cloudapp.azure.com:5443/AdminLogin';
 
   constructor(private client: HttpClient, private userService: UserService) { }
+
 
   getToken(): string {
     return localStorage.getItem(TOKEN_NAME);
   }
+
 
   setToken(token: string): void {
     localStorage.setItem(TOKEN_NAME, token);
@@ -53,6 +56,8 @@ export class AuthService {
       window.alert(error.error);
     });
   }
+
+
 
 }
 

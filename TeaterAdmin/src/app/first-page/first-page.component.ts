@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../auth/auth.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-first-page',
@@ -10,6 +12,11 @@ export class FirstPageComponent implements OnInit {
   dates = [{dateForShow: 'a date'}];
 
   public showAvailableTimes = false;
+
+  constructor(private authService: AuthService, private userService: UserService) {
+
+  }
+
 
   onDropDownElementPressed() {
     console.log("pressed");
@@ -28,7 +35,20 @@ export class FirstPageComponent implements OnInit {
     console.log(dateSelect);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log('NICOLAS SIGER MAN IK MÅ SIGE FUCK ' + this.userService.getUserName());
+  }
+
+  getUserName() {
+    return this.isAuthenticated() ? '' : '' + this.userService.getUserName();
+  }
+
+  isAuthenticated() {
+    return this.authService.isTokenExpired(this.authService.getToken());
+  }
+
+  onLogout() {
+    localStorage.clear();
   }
 
 }

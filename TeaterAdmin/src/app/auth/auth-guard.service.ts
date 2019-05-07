@@ -9,13 +9,16 @@ export class AuthGuardService implements CanActivate {
     private router: Router,
     private authService: AuthService) {}
 
-    canActivate() {
-    if(!this.authService.isTokenExpired()) {
+
+
+  canActivate() {
+    if (!this.authService.isTokenExpired()) {
       return true;
     }
 
     this.router.navigate(['/signin']);
-    }
+    return false;
+  }
 
 
 }
