@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import {UserService} from '../../user.service';
-import {isString} from 'ngx-bootstrap/chronos/utils/type-checks';
 
 @Component({
   selector: 'app-navigationbar',
@@ -23,6 +22,10 @@ export class NavigationbarComponent implements OnInit {
 
   isAuthenticated() {
     return this.authService.isTokenExpired(this.authService.getToken());
+  }
+
+  onLogout() {
+    localStorage.clear();
   }
 
 

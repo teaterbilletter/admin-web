@@ -10,3 +10,9 @@
   margin-top: 10px;
   color: white;
 }
+
+#button {
+  position: relative;
+  float: right;
+  margin-bottom: 1%;
+}

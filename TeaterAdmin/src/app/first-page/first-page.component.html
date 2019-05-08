@@ -1,35 +1,52 @@
-<div class="container">
+<div class="container" style="margin-top: 1%">
   <h3>Velkommen {{ getUserName()}}</h3>
   <hr>
-  <p class="welcome"> Du er nu logget ind som administrator på hjemmesiden. <br>Du kan nu vælge følgende muligheder nedenfor:</p>
-
+  <p class="welcome"> Du er nu logget ind som administrator på hjemmesiden. <br>Du kan nu vælge følgende muligheder
+    nedenfor:</p>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <p>Vælg forstilling</p>
-          <hr>
-          <div class="row">
-            <div class="btn-group col-xs-6 col-md-5 marginBottom">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Vælg forstilling
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" (click)="onDropDownElementPressed()">
-                <a class="dropdown-item" *ngFor="let show of shows">{{show.title}}</a>
+
+
+<hr/>
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <h3>
+          Forestillinger
+        </h3>
+        <div class="card">
+          <div class="card-body">
+            <p>Vælg forstilling</p>
+            <hr>
+            <div class="row">
+              <div class="btn-group col-xs-6 col-md-5 marginBottom">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Vælg forstilling
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" (click)="onDropDownElementPressed()">
+                  <a class="dropdown-item" *ngFor="let show of shows">{{show.title}}</a>
+                </div>
               </div>
-            </div>
 
-            <div class="col-xs-3 col-md-5 marginBottom">
-              <input type="text" class="form-control" placeholder="Vælg dato" bsDatepicker>
-            </div>
+              <div class="col-xs-3 col-md-5 marginBottom">
+                <input type="text" class="form-control" placeholder="Vælg dato" bsDatepicker>
+              </div>
 
-            <div class="col-xs-3 col-md-2 marginBottom">
-              <button type="button" class="btn btn-secondary" (click)="onDropDownElementPressed()">Vis</button>
+              <div class="col-xs-3 col-md-2 marginBottom">
+                <button type="button" class="btn btn-secondary" (click)="onDropDownElementPressed()">Vis</button>
+              </div>
+              <app-available-shows
+                [ngStyle]="{'display' : getDropDownElementPressed() ? 'block' : 'none'}"></app-available-shows>
             </div>
-            <app-available-shows [ngStyle]="{'display' : getDropDownElementPressed() ? 'block' : 'none'}"></app-available-shows>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Opret ny forstilling</p>
+            <button routerLink="/new-show" type="button" class="btn btn-secondary">Opret forstilling</button>
+            <hr>
           </div>
         </div>
       </div>
@@ -37,38 +54,53 @@
   </div>
 </div>
 
+<hr/>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-4 marginBottom">
-      <div class="card">
-        <div class="card-body">
-          <p>Opret ny forstilling</p>
-          <button routerLink="/new-show" type="button" class="btn btn-secondary">Opret forstilling</button>
-          <hr>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <h3>
+          Sal
+        </h3>
+        <div class="card">
+          <div class="card-body">
+            <p>Opret ny sal</p>
+            <button routerLink="/AddHall" type="button" class="btn btn-secondary">Opret ny sal</button>
+            <hr>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-4 marginBottom">
-      <div class="card">
-        <div class="card-body">
-          <p>Opret nyt teater</p>
-          <button routerLink="/n-t" type="button" class="btn btn-secondary">Opret nyt teater</button>
-          <hr>
+<hr/>
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <h3>
+          Teater
+        </h3>
+        <div class="card">
+          <div class="card-body">
+            <p>Opret nyt teater</p>
+            <button routerLink="/AddTheater" type="button" class="btn btn-secondary">Opret nyt teater</button>
+            <hr>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<hr/>
+
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-4 marginBottom">
+    <div class="col-xs-12 col-md-12">
       <div class="card">
         <div class="card-body">
           <p>Log ud</p>

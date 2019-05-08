@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {UserService} from '../user.service';
-import {HttpClient} from '@angular/common/http';
-import {Show} from '../model/show';
-import {ShowService} from '../services/show.service';
-import {Booking} from '..';
-import {RestapiService} from '../services/restapi.service';
-
+import {Show} from '..';
+import {ShowService} from '..';
 
 @Component({
   selector: 'app-first-page',
@@ -21,7 +17,6 @@ export class FirstPageComponent implements OnInit {
   public diplayShows: Show;
 
   public showAvailableTimes = false;
-  private AllShowsUrl = 'https://ticket.northeurope.cloudapp.azure.com:5443/AllShows';
 
   constructor(private authService: AuthService, private userService: UserService, private showService: ShowService) {
 
@@ -47,29 +42,14 @@ export class FirstPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-
     this.showService.getAllShows().subscribe((shows: Show[]) => {
       this.shows = shows;
-      console.log(shows);
-
     });
 
   }
 
   getUserName() {
-    return this.isAuthenticated() ? '' : '' + this.userService.getUserName();
+    return this.userService.getUserName();
   }
-
-  isAuthenticated() {
-    return this.authService.isTokenExpired(this.authService.getToken());
-  }
-
-  onLogout() {
-    localStorage.clear();
-  }
-
-
 
 }

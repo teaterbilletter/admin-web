@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './static_content/footer/footer.component';
 import { NavigationbarComponent } from './static_content/navigationbar/navigationbar.component';
 import { AdminComponent } from './admin/admin.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TestComponentComponent } from './test-component/test-component.component';
@@ -24,6 +24,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Intercept} from './intercepter';
 import {UserService} from './user.service';
 import { NewTeaterComponent } from './new-teater/new-teater.component';
+import { AddTheatersComponent } from './add-theaters/add-theaters.component';
+import { AddHallComponent } from './add-hall/add-hall.component';
 
 
 @NgModule({
@@ -41,11 +43,14 @@ import { NewTeaterComponent } from './new-teater/new-teater.component';
     SigninComponent,
     AvailableShowsComponent,
     FirstPageComponent,
-    NewTeaterComponent
+    NewTeaterComponent,
+    AddTheatersComponent,
+    AddHallComponent
   ],
   imports: [
     BrowserModule,
     BsDatepickerModule.forRoot(),
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     TabsModule,

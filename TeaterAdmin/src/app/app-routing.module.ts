@@ -9,6 +9,8 @@ import {AvailableShowsComponent} from './available-shows/available-shows.compone
 import {FirstPageComponent} from './first-page/first-page.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 import {NewTeaterComponent} from './new-teater/new-teater.component';
+import { AddTheatersComponent } from './add-theaters/add-theaters.component';
+import { AddHallComponent } from './add-hall/add-hall.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +20,9 @@ const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent, canActivate: [AuthGuardService]},
   {path: 'signin', component: SigninComponent},
   {path: 'a-s', component: AvailableShowsComponent, canActivate: [AuthGuardService]},
-  {path: 'n-t', component: NewTeaterComponent, canActivate: [AuthGuardService]}
+  {path: 'n-t', component: NewTeaterComponent, canActivate: [AuthGuardService]},
+  {path: 'AddTheater', component: AddTheatersComponent, canActivate: [AuthGuardService]},
+  {path: 'AddHall', component: AddHallComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

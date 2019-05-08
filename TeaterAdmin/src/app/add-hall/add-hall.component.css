@@ -1,0 +1,21 @@
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#preem {
+  text-align: left;
+  margin-left: 30px;
+
+  color: #000000;
+}

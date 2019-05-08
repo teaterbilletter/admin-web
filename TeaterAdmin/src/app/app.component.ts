@@ -6,12 +6,12 @@ import * as firebase from 'firebase';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit{
+export class AppComponent  implements OnInit {
   title = 'TeaterAdmin';
   ngOnInit() {
     firebase.initializeApp({
-      apiKey: "AIzaSyA7DvfaIHOvR0LDQ1h2jkMca4MYcWGv0TM",
-      authDomain: "mitprojekt-a2f89.firebaseapp.com",
+      apiKey: 'AIzaSyA7DvfaIHOvR0LDQ1h2jkMca4MYcWGv0TM',
+      authDomain: 'mitprojekt-a2f89.firebaseapp.com',
     });
   }
 }
