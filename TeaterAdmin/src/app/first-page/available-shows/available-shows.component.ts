@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Show, ShowService} from '..';
+import {Show, ShowService} from '../..';
 import {HttpClient} from '@angular/common/http';
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AdministratorService, Hall} from '..';
+import {AdministratorService, Hall} from '../../..';
 
 @Component({
   selector: 'app-add-hall',
@@ -43,18 +43,5 @@ export class AddHallComponent implements OnInit {
 
     this.addHallForm.reset();
   }
-
-  /*const hall: Hall = {
-      hallNum: +this.addHallForm.get('hall.hallNumber').value.toString(),
-      theater: {
-        name: this.addHallForm.get('hall.theaterName').value.toString(),
-        address: '',
-        active: true
-      },
-      rows: +this.addHallForm.get('hall.rowCount').value.toString(),
-      seats: +this.addHallForm.get('hall.seatCount').value.toString()
-    };
-    this.adminService.createHall(hall).subscribe( result => console.log(result));
- */
 
 }

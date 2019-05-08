@@ -5,11 +5,13 @@
   margin-top: 60px;
 }
 
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
-
 
 #preem {
   text-align: left;

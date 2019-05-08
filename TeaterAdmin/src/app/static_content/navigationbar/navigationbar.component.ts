@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import {UserService} from '../../user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navigationbar',
@@ -9,7 +10,7 @@ import {UserService} from '../../user.service';
 })
 export class NavigationbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -27,7 +28,4 @@ export class NavigationbarComponent implements OnInit {
   onLogout() {
     localStorage.clear();
   }
-
-
-
 }

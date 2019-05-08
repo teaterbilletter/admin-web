@@ -16,7 +16,8 @@ import { CustomHttpUrlEncodingCodec } from '../encoder';
 
 import { Observable } from 'rxjs';
 
-import { Hall } from '..';
+import {BASE_PATH} from '..';
+import { Hall} from '..';
 import { Show } from '..';
 import { Theater } from '..';
 
@@ -33,6 +34,7 @@ export class AdministratorService {
   constructor(protected httpClient: HttpClient,
               @Optional()@Inject(BASE_PATH) basePath: string,
               @Optional() configuration: Configuration) {
+
         if (basePath) {
             this.basePath = basePath;
         }

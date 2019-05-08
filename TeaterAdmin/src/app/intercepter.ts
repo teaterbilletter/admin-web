@@ -8,7 +8,6 @@ export class Intercept implements HttpInterceptor {
   constructor() {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log(localStorage.getItem('jwt_token'));
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
