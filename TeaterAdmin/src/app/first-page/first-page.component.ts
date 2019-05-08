@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Show} from '../model/show';
 import {ShowService} from '../services/show.service';
 import {Booking} from '..';
+import {RestapiService} from '../services/restapi.service';
 
 
 @Component({
@@ -22,7 +23,9 @@ export class FirstPageComponent implements OnInit {
   public showAvailableTimes = false;
   private AllShowsUrl = 'https://ticket.northeurope.cloudapp.azure.com:5443/AllShows';
 
-  constructor(private authService: AuthService, private userService: UserService, private showService: ShowService, private client: HttpClient) {
+  constructor(private authService: AuthService, private userService: UserService, private showService: ShowService) {
+
+
   }
 
 
@@ -44,6 +47,7 @@ export class FirstPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
 
 
     this.showService.getAllShows().subscribe((shows: Show[]) => {

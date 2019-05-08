@@ -10,27 +10,29 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import {Inject, Injectable, Optional} from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders, HttpResponse} from '@angular/common/http';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import {Observable} from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
-import {Show} from '../model/show';
-import {Theater} from '../model/theater';
+import { Hall } from '../model/hall';
+import { Show } from '../model/show';
+import { Theater } from '../model/theater';
 
-import {BASE_PATH} from '../variables';
-import {Configuration} from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
-@Injectable()
+@Injectable({providedIn : 'root'})
 export class AdministratorService {
 
     protected basePath = '/';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional()
-    @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -56,16 +58,32 @@ export class AdministratorService {
 
 
     /**
-     * @param body
-     * * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * 
+     * 
+     * @param body 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createShow(body?: Show, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public createShow(body?: Show, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public createShow(body?: Show, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public createShow(body?: Show, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public createHall(body?: Hall, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createHall(body?: Hall, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createHall(body?: Hall, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createHall(body?: Hall, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
+        let headers = this.defaultHeaders;
+
+        // authentication (Bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
 
         // to determine the Content-Type header
         const consumes: string[] = [
@@ -76,14 +94,14 @@ export class AdministratorService {
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-
+            headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/Show`,
+        return this.httpClient.post<any>(`${this.basePath}/Hall`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
-
+                headers: headers,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -91,9 +109,60 @@ export class AdministratorService {
     }
 
     /**
-     *
-     *
-     * @param body
+     * 
+     * 
+     * @param body 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public createShow(body?: Show, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public createShow(body?: Show, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public createShow(body?: Show, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public createShow(body?: Show, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let headers = this.defaultHeaders;
+
+        // authentication (Bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/_*+json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<any>(`${this.basePath}/Show`,
+            body,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param body 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -103,13 +172,19 @@ export class AdministratorService {
     public createTheater(body?: Theater, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
+        let headers = this.defaultHeaders;
+
+        // authentication (Bearer) required
+        if (this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
@@ -121,14 +196,14 @@ export class AdministratorService {
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-
+            headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
         return this.httpClient.post<any>(`${this.basePath}/Theater`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
-
+                headers: headers,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -136,26 +211,26 @@ export class AdministratorService {
     }
 
     /**
-     *
-     *
-     * @param id
+     * 
+     * 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteCustomer(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteCustomer(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteCustomer(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteCustomer(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteCustomer(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteCustomer(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteCustomer(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteCustomer(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteCustomer.');
         }
 
-
+        let headers = this.defaultHeaders;
 
         // authentication (Bearer) required
         if (this.configuration.apiKeys["Authorization"]) {
-
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
         }
 
         // to determine the Accept header
@@ -163,7 +238,7 @@ export class AdministratorService {
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
@@ -173,7 +248,7 @@ export class AdministratorService {
         return this.httpClient.delete<any>(`${this.basePath}/Customer/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
-
+                headers: headers,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -181,26 +256,28 @@ export class AdministratorService {
     }
 
     /**
-     *
-     *
-     * @param title
+     * 
+     * 
+     * @param id 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteShowDates(title: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteShowDates(title: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteShowDates(title: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteShowDates(title: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteShowDates(id?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteShowDates(id?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteShowDates(id?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteShowDates(id?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (title === null || title === undefined) {
-            throw new Error('Required parameter title was null or undefined when calling deleteShowDates.');
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (id !== undefined && id !== null) {
+            queryParameters = queryParameters.set('id', <any>id);
         }
 
-
+        let headers = this.defaultHeaders;
 
         // authentication (Bearer) required
         if (this.configuration.apiKeys["Authorization"]) {
-
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
         }
 
         // to determine the Accept header
@@ -208,17 +285,18 @@ export class AdministratorService {
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
 
-        return this.httpClient.delete<any>(`${this.basePath}/ShowDates/${encodeURIComponent(String(title))}`,
+        return this.httpClient.delete<any>(`${this.basePath}/ShowDates`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
-
+                headers: headers,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -226,28 +304,23 @@ export class AdministratorService {
     }
 
     /**
-     *
-     *
-     * @param oldshowtitle
-     * @param body
+     * 
+     * 
+     * @param body 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateShow(oldshowtitle: string, body?: Show, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateShow(oldshowtitle: string, body?: Show, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateShow(oldshowtitle: string, body?: Show, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public updateShow(oldshowtitle: string, body?: Show, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (oldshowtitle === null || oldshowtitle === undefined) {
-            throw new Error('Required parameter oldshowtitle was null or undefined when calling updateShow.');
-        }
+    public updateShow(body?: Show, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public updateShow(body?: Show, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public updateShow(body?: Show, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateShow(body?: Show, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
-
+        let headers = this.defaultHeaders;
 
         // authentication (Bearer) required
         if (this.configuration.apiKeys["Authorization"]) {
-
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
         }
 
         // to determine the Accept header
@@ -255,7 +328,7 @@ export class AdministratorService {
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
@@ -267,14 +340,14 @@ export class AdministratorService {
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-
+            headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.put<any>(`${this.basePath}/Show/${encodeURIComponent(String(oldshowtitle))}`,
+        return this.httpClient.put<any>(`${this.basePath}/Show`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
-
+                headers: headers,
                 observe: observe,
                 reportProgress: reportProgress
             }
@@ -282,10 +355,10 @@ export class AdministratorService {
     }
 
     /**
-     *
-     *
-     * @param oldtheatername
-     * @param body
+     * 
+     * 
+     * @param oldtheatername 
+     * @param body 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -299,11 +372,11 @@ export class AdministratorService {
         }
 
 
-
+        let headers = this.defaultHeaders;
 
         // authentication (Bearer) required
         if (this.configuration.apiKeys["Authorization"]) {
-
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
         }
 
         // to determine the Accept header
@@ -311,7 +384,7 @@ export class AdministratorService {
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
-
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
         }
 
         // to determine the Content-Type header
@@ -323,14 +396,14 @@ export class AdministratorService {
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
-
+            headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
         return this.httpClient.put<any>(`${this.basePath}/Theater/${encodeURIComponent(String(oldtheatername))}`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
-
+                headers: headers,
                 observe: observe,
                 reportProgress: reportProgress
             }
