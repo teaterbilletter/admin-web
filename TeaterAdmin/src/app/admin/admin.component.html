@@ -1,34 +1,29 @@
+
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle">
-        Vælg forestilling <span class="caret"></span>
+    <div class="btn-group-toggle drop">
+      <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+        Vælg forestilling
       </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Forestilling XX</a></li>
-        <li><a href="#">Forestilling YY</a></li>
-        <li><a href="#">Forestilling YX</a></li>
-      </ul>
-      &nbsp;
-      <button
-        type="button"
-        class="btn btn-primary dropdown-toggle">
-        Vælg dato <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <div class="form-group">
-          <label for="teaterDato">Dato for forstilling </label>
-          <input id="teaterDato" name="teaterDato"
-          type="text" class="form-control">
-        </div>
-      </ul>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Forestilling XX</a>
+        <a class="dropdown-item" href="#">Forestilling YY</a>
+        <a class="dropdown-item" href="#">Forestilling YX</a>
+      </div>
     </div>
   </div>
-</div>
+
+
+
+      <div class="row">
+        <div class="col-xs-12 col-12 col-md-9 form-group">
+          <input type="text" placeholder="Vælg dato" class="form-control rounded_corner" bsDatepicker>
+        </div>
+    </div>
+
+
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success" type="submit">Næste ></button>
+    <button class="btn btn-outline-dark" type="submit">Næste ></button>
   </div>
 </div>
