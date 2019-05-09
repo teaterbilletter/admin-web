@@ -4,7 +4,7 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
     </ul>
-    <button routerLink="" class="btn  btn-dark" type="submit" (click)="onLogout()">Log out</button>
+    <button routerLink="" class="btn  btn-dark" type="submit" (click)="onLogout()" *ngIf="!isAuthenticated()">Log out</button>
 
   </div>
 </nav>

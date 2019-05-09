@@ -1,0 +1,54 @@
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <h3>
+          Forestillinger
+        </h3>
+        <div class="card">
+          <div class="card-body">
+            <p>Aflys forstilling</p>
+            <hr>
+            <div class="row">
+              <div class="btn-group btn marginBottom">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Vælg forstilling
+                </button>
+                <hr/>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" *ngFor="let show of shows"
+                     (click)="onDropDownElementPressed(show.id)">{{show.title}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div [ngStyle]="{'display' : getDropDownElementPressed() ? 'block' : 'none'}" class="row ">
+                <div class="carddate row" *ngFor="let showdate of dates; let i = index;">
+                  <div class="card-body columnList">
+                    <div class="card-title">{{showdate.toDateString()}}</div>
+                    <div class="card-subtitle mb-2 text-muted">{{showdate.toLocaleTimeString()}}</div>
+                    <button type="button" class="btn btn-secondary" (click)="CancelDate()">Aflys</button>
+                  </div>
+                  <hr/>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Opret forstilling</p>
+            <button routerLink="/AddShow" type="button" class="btn btn-secondary">Opret forstilling</button>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

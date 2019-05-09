@@ -17,7 +17,7 @@ import {
 } from '@angular/common/http';
 import {CustomHttpUrlEncodingCodec} from '../encoder';
 
-import {Observable} from 'rxjs';
+import {observable, Observable} from 'rxjs';
 
 
 import {Configuration} from '../configuration';

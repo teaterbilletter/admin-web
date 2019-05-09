@@ -2,13 +2,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
-import {AvailableShowsComponent} from './first-page/available-shows/available-shows.component';
+import {AvailableShowsComponent} from './first-page/manage_shows/available-shows/available-shows.component';
 import {FirstPageComponent} from './first-page/first-page.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 import { AddTheatersComponent } from './first-page/manage_theaters/add-theaters/add-theaters.component';
 import { AddHallComponent } from './first-page/manage_halls/add-hall/add-hall.component';
 import { NewShowComponent } from './first-page/manage_shows/new-show/new-show.component';
-import {DeleteCustomerComponent} from "./first-page/manage_customers/delete-customer/delete-customer.component";
+import {DeleteCustomerComponent} from './first-page/manage_customers/delete-customer/delete-customer.component';
+import {UpdateTheaterComponent} from './first-page/manage_theaters/update-theater/update-theater.component';
 
 
 const appRoutes: Routes = [
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   {path: 'AddTheater', component: AddTheatersComponent, canActivate: [AuthGuardService]},
   {path: 'AddHall', component: AddHallComponent, canActivate: [AuthGuardService]},
   {path: 'AddShow', component: NewShowComponent, canActivate: [AuthGuardService]},
-  {path: 'DeleteCustomer', component: DeleteCustomerComponent, canActivate: [AuthGuardService]}
+  {path: 'DeleteCustomer', component: DeleteCustomerComponent, canActivate: [AuthGuardService]},
+  {path: 'UpdateTheater', component: UpdateTheaterComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

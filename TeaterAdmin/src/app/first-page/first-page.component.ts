@@ -23,20 +23,8 @@ export class FirstPageComponent implements OnInit {
   }
 
 
-  onDropDownElementPressed(id: number) {
-    this.showService.setShowIdInStorage(id);
-    console.log('pressed ' + id);
-    this.showAvailableTimes = true;
-  }
-
-  getDropDownElementPressed() {
-    return this.showAvailableTimes;
-  }
-
   ngOnInit() {
-    this.showService.getAllShows().subscribe((shows: Show[]) => {
-      this.shows = shows;
-    });
+
 
   }
 

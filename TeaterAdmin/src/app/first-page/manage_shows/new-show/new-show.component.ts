@@ -12,4 +12,7 @@ export class NewShowComponent implements OnInit {
   ngOnInit() {
   }
 
+  OnSubmit() {
+
+  }
 }

@@ -8,43 +8,7 @@
 
 <hr/>
 
-<div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <h3>
-          Forestillinger
-        </h3>
-        <div class="card">
-          <div class="card-body">
-            <p>Aflys forstilling</p>
-            <hr>
-            <div class="row">
-              <div class="btn-group col-xs-6 col-md-5 marginBottom">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Vælg forstilling
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" *ngFor="let show of shows" (click)="onDropDownElementPressed(show.id)">{{show.title}}</a>
-                </div>
-              </div>
-              <app-available-shows
-                [ngStyle]="{'display' : getDropDownElementPressed() ? 'block' : 'none'}"></app-available-shows>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <p>Opret forstilling</p>
-            <button routerLink="/AddShow" type="button" class="btn btn-secondary">Opret forstilling</button>
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<app-available-shows></app-available-shows>
 
 <hr/>
 
@@ -80,6 +44,13 @@
           <div class="card-body">
             <p>Opret teater</p>
             <button routerLink="/AddTheater" type="button" class="btn btn-secondary">Opret nyt teater</button>
+            <hr>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Opdater teater</p>
+            <button routerLink="/UpdateTheater" type="button" class="btn btn-secondary">Opdater et teater</button>
             <hr>
           </div>
         </div>

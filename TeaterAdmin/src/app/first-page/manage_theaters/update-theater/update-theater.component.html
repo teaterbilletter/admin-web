@@ -1,0 +1,76 @@
+<div class="col-xs-12">
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h1>
+          Opdater et teater
+        </h1>
+        <form [formGroup]="updateTheaterForm" (ngSubmit)="onSubmit()">
+          <div formGroupName="theater">
+            <div class="form-group">
+              <label for="theaterName">Nyt teaternavn</label>
+              <input
+                id="theaterName"
+                formControlName="theaterName"
+                type="text"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="theaterStreet">Ny adresse</label>
+              <input
+                id="theaterStreet"
+                formControlName="theaterStreet"
+                type="text"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="theaterZip">Nyt postnummer</label>
+              <input
+                id="theaterZip"
+                formControlName="theaterZip"
+                type="text"
+                class="form-control">
+            </div>
+          </div>
+          <hr/>
+          <div class="form-group">
+          <label for="oldTheaterName">Det gamle teater navn</label>
+          <input
+            id="oldTheaterName"
+            formControlName="oldTheaterName"
+            type="text"
+            class="form-control">
+        </div>
+          <span
+            *ngIf="!updateTheaterForm.valid && updateTheaterForm.touched"
+            class="help-block">Please enter valid data!
+          </span>
+          <div>
+            <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#myModal">Submit</button>
+          </div>
+        </form>
+
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h4 class="modal-title">Teateret er oprettet</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <div class="modal-body">
+                Teateret er nu blevet oprettet, og er klar til at blive vist på hjemmesiden.
+              </div>
+
+              <div class="modal-footer">
+                <button  routerLink="/first-page" type="button" class="btn btn-secondary" data-dismiss="modal">Luk</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

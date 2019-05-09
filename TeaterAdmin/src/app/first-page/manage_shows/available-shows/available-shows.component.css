@@ -1,4 +1,4 @@
-.card {
+.carddate {
   margin-top: 20px;
   margin-bottom: 20px;
   cursor: pointer;
@@ -7,11 +7,30 @@
   margin-right: 20px;
 }
 
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin-bottom: 3%;
+}
+
+.columnList {
+  column-count: 3;
+  alignment: center;
+}
+
 .card:hover{
   box-shadow: 0 0 11px rgba(33,33,33,.2); ;
 }
 
 .card-title{
   font-size: 200%;
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
 }
 

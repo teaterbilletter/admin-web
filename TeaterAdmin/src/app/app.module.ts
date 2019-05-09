@@ -12,7 +12,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import {TabsModule} from 'ngx-bootstrap';
 import {AuthService} from './auth/auth.service';
-import { AvailableShowsComponent } from './first-page/available-shows/available-shows.component';
+import { AvailableShowsComponent } from './first-page/manage_shows/available-shows/available-shows.component';
 import { FirstPageComponent } from './first-page/first-page.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -21,6 +21,8 @@ import {UserService} from './user.service';
 import { AddTheatersComponent } from './first-page/manage_theaters/add-theaters/add-theaters.component';
 import { AddHallComponent } from './first-page/manage_halls/add-hall/add-hall.component';
 import { DeleteCustomerComponent } from './first-page/manage_customers/delete-customer/delete-customer.component';
+import { UpdateShowComponent } from './first-page/manage_shows/update-show/update-show.component';
+import { UpdateTheaterComponent } from './first-page/manage_theaters/update-theater/update-theater.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { DeleteCustomerComponent } from './first-page/manage_customers/delete-cu
     FirstPageComponent,
     AddTheatersComponent,
     AddHallComponent,
-    DeleteCustomerComponent
+    DeleteCustomerComponent,
+    UpdateShowComponent,
+    UpdateTheaterComponent
   ],
   imports: [
     BrowserModule,
