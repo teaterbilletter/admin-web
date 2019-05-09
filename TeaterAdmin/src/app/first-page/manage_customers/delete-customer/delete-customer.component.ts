@@ -28,7 +28,6 @@ export class DeleteCustomerComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.customerID = this.deleteCustomerForm.get('customer.customerID').value.toString();
     this.adminService.deleteCustomer(this.customerID).subscribe( result => console.log(result));
     this.deleteCustomerForm.reset();

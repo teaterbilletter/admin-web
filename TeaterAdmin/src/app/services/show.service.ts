@@ -41,6 +41,13 @@ export class ShowService {
     }
   }
 
+  public getShowIdFromStorage(): string {
+    return window.sessionStorage.getItem('showId');
+  }
+
+  public setShowIdInStorage(showId: string) {
+    window.sessionStorage.setItem('showId', showId);
+  }
 
   public getAllShows(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
     return this.httpClient.get<any>(`${this.basePath}/AllShows`,

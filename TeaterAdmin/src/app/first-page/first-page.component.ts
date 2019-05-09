@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {UserService} from '../user.service';
 import {Show} from '..';
@@ -20,25 +20,17 @@ export class FirstPageComponent implements OnInit {
 
   constructor(private authService: AuthService, private userService: UserService, private showService: ShowService) {
 
-
   }
 
 
-  onDropDownElementPressed() {
-    console.log('pressed');
+  onDropDownElementPressed(id: number) {
+    this.showService.setShowIdInStorage(id);
+    console.log('pressed ' + id);
     this.showAvailableTimes = true;
   }
 
   getDropDownElementPressed() {
     return this.showAvailableTimes;
-  }
-
-  onDateSelected(dateSelect: {dates: string}) {
-    this.dates.push({
-      dateForShow: dateSelect.dates
-
-    });
-    console.log(dateSelect);
   }
 
   ngOnInit() {

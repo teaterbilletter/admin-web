@@ -17,7 +17,7 @@
         </h3>
         <div class="card">
           <div class="card-body">
-            <p>Vælg forstilling</p>
+            <p>Aflys forstilling</p>
             <hr>
             <div class="row">
               <div class="btn-group col-xs-6 col-md-5 marginBottom">
@@ -25,17 +25,9 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Vælg forstilling
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" (click)="onDropDownElementPressed()">
-                  <a class="dropdown-item" *ngFor="let show of shows">{{show.title}}</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" *ngFor="let show of shows" (click)="onDropDownElementPressed(show.id)">{{show.title}}</a>
                 </div>
-              </div>
-
-              <div class="col-xs-3 col-md-5 marginBottom">
-                <input type="text" class="form-control" placeholder="Vælg dato" bsDatepicker>
-              </div>
-
-              <div class="col-xs-3 col-md-2 marginBottom">
-                <button type="button" class="btn btn-secondary" (click)="onDropDownElementPressed()">Vis</button>
               </div>
               <app-available-shows
                 [ngStyle]="{'display' : getDropDownElementPressed() ? 'block' : 'none'}"></app-available-shows>
@@ -44,7 +36,7 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <p>Opret ny forstilling</p>
+            <p>Opret forstilling</p>
             <button routerLink="/AddShow" type="button" class="btn btn-secondary">Opret forstilling</button>
             <hr>
           </div>
@@ -65,7 +57,7 @@
         </h3>
         <div class="card">
           <div class="card-body">
-            <p>Opret ny sal</p>
+            <p>Opret sal</p>
             <button routerLink="/AddHall" type="button" class="btn btn-secondary">Opret ny sal</button>
             <hr>
           </div>
@@ -86,7 +78,7 @@
         </h3>
         <div class="card">
           <div class="card-body">
-            <p>Opret nyt teater</p>
+            <p>Opret teater</p>
             <button routerLink="/AddTheater" type="button" class="btn btn-secondary">Opret nyt teater</button>
             <hr>
           </div>
