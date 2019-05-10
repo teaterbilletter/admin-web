@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {Show} from "..";
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
@@ -15,6 +16,8 @@ export class WelcomePageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
   onDropDownElementPressed() {
     console.log("pressed");

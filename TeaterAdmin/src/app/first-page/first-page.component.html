@@ -11,14 +11,15 @@
         <div class="card-body">
           <p>Vælg forstilling</p>
           <hr>
+
           <div class="row">
             <div class="btn-group col-xs-6 col-md-5 marginBottom">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonShow"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Vælg forstilling
+                {{showTitle}}
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" (click)="onDropDownElementPressed()">
-                <a class="dropdown-item" *ngFor="let show of shows">{{show.title}}</a>
+                <a class="dropdown-item" *ngFor="let show of shows" (click)="showSelected(show)" >{{show.title}}</a>
               </div>
             </div>
 

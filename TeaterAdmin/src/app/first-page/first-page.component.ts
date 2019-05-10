@@ -16,7 +16,8 @@ import {RestapiService} from '../services/restapi.service';
 export class FirstPageComponent implements OnInit {
 
   dates = [{dateForShow: 'a date'}];
-
+  
+  public showTitle = 'Vælg forstilling';
   public shows: Array<Show>;
   public diplayShows: Show;
 
@@ -27,7 +28,12 @@ export class FirstPageComponent implements OnInit {
 
 
   }
+  showSelected(show: Show) {
 
+    console.log(show);
+    this.showTitle = show.title;
+
+  }
 
   onDropDownElementPressed() {
     console.log('pressed');
