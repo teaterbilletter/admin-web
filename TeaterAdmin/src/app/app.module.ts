@@ -23,6 +23,7 @@ import { AddHallComponent } from './first-page/manage_halls/add-hall/add-hall.co
 import { DeleteCustomerComponent } from './first-page/manage_customers/delete-customer/delete-customer.component';
 import { UpdateShowComponent } from './first-page/manage_shows/update-show/update-show.component';
 import { UpdateTheaterComponent } from './first-page/manage_theaters/update-theater/update-theater.component';
+import {DatePipe} from '@angular/common';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { UpdateTheaterComponent } from './first-page/manage_theaters/update-thea
     },
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

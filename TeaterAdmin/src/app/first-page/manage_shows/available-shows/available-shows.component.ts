@@ -1,6 +1,8 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {AdministratorService, Show, ShowService} from '../../..';
 import {HttpClient} from '@angular/common/http';
+import {DatePipe} from '@angular/common';
+import {forEach} from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -12,9 +14,12 @@ export class AvailableShowsComponent implements OnInit {
   public shows: Show[];
   public show: Show = {};
   public dates: Array<Date> = [];
+  private tempdates: Array<Date> = [];
   private tempdate: Date;
+  private showAvailableTimes: any;
 
-  constructor(private showService: ShowService, private adminService: AdministratorService) {
+
+  constructor(private showService: ShowService, private adminService: AdministratorService, private datepipe: DatePipe) {
     this.showService.getAllShows().subscribe((shows: Show[]) => {
     this.shows = shows;
   });
@@ -40,9 +45,14 @@ export class AvailableShowsComponent implements OnInit {
     return this.showAvailableTimes;
   }
 
-  CancelDate() {
-    // TODO: delete show when endpoints are updated
-    // this.adminService.deleteShowDates();
+  CancelDate(showDate: Date) {
+    for (const d of this.dates) {
+      if ( !(d.getMonth() === showDate.getMonth() && d.getDate() === showDate.getDate() && d.getHours() === showDate.getHours()) ) {
+        this.tempdates.push(d);
+      }
+    }
+    this.dates = this.tempdates;
+    this.adminService.deleteShowDates(this.show.id, showDate);
   }
 
 

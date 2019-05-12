@@ -27,7 +27,7 @@ import {BASE_PATH} from '../variables';
 @Injectable({providedIn: 'root'})
 export class ShowService {
 
-  protected basePath = 'https://ticket.northeurope.cloudapp.azure.com:5443';
+  protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com/';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();
 

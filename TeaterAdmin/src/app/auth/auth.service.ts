@@ -14,7 +14,7 @@ interface LoginResult {
 export class AuthService {
 
 
-  private url = 'https://ticket.northeurope.cloudapp.azure.com:5443/AdminLogin';
+  private url = 'https://disttickets.northeurope.cloudapp.azure.com/';
 
   constructor(private client: HttpClient, private userService: UserService) { }
 

@@ -22,18 +22,20 @@ import { Show } from '..';
 import { Theater } from '..';
 
 import { Configuration } from '../configuration';
+import {DatePipe} from '@angular/common';
+import {Params} from '@angular/router';
 
 
 @Injectable({providedIn : 'root'})
 export class AdministratorService {
 
-    protected basePath = 'https://ticket.northeurope.cloudapp.azure.com:5443';
+    protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com/';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
   constructor(protected httpClient: HttpClient,
               @Optional()@Inject(BASE_PATH) basePath: string,
-              @Optional() configuration: Configuration) {
+              @Optional() configuration: Configuration, private datepipe: DatePipe) {
 
         if (basePath) {
             this.basePath = basePath;
@@ -93,21 +95,21 @@ export class AdministratorService {
     }
 
 
-    public deleteShowDates(id?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public deleteShowDates(id?: number, dateTime?: Date, observe: any = 'body', reportProgress: boolean = false ) {
 
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (id !== undefined && id !== null) {
-            queryParameters = queryParameters.set('id', id as any);
+            queryParameters = queryParameters.append('id', id as any);
         }
-        return this.httpClient.delete<any>(`${this.basePath}/ShowDates`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                observe,
-                reportProgress
-            }
-        );
+        if (dateTime !== undefined && dateTime !== null) {
+            queryParameters = queryParameters.append('dateTime', this.datepipe.transform(dateTime, 'yyyy-MM-dd hh:mm:ss') as any);
+        }
+        console.log(id + ' ' + this.datepipe.transform(dateTime, 'yyyy-MM-dd hh:mm:ss'));
+        console.log(queryParameters.get('id') + ' - ' + queryParameters.get('dateTime'));
+        this.httpClient.delete(this.basePath.concat('/ShowDates/'), {params: queryParameters}).subscribe(result => console.log(result));
+
+
     }
 
 
