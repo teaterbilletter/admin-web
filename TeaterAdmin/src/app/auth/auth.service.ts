@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../user.service';
+import {Router} from "@angular/router";
 
 export const TOKEN_NAME = 'jwt_token';
 
@@ -14,9 +15,10 @@ interface LoginResult {
 export class AuthService {
 
 
-  private url = 'https://disttickets.northeurope.cloudapp.azure.com/';
+  private url = 'https://disttickets.northeurope.cloudapp.azure.com/AdminLogin';
 
-  constructor(private client: HttpClient, private userService: UserService) { }
+  constructor(private client: HttpClient, private userService: UserService, private router: Router) {
+  }
 
 
   getToken(): string {
@@ -31,7 +33,9 @@ export class AuthService {
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
 
-    if (decoded.exp === undefined) { return null; }
+    if (decoded.exp === undefined) {
+      return null;
+    }
 
     const date = new Date(0);
     date.setUTCSeconds(decoded.exp);
@@ -39,11 +43,17 @@ export class AuthService {
   }
 
   isTokenExpired(token?: string): boolean {
-    if (!token) { token = this.getToken(); }
-    if (!token) { return true; }
+    if (!token) {
+      token = this.getToken();
+    }
+    if (!token) {
+      return true;
+    }
 
     const date = this.getTokenExpirationDate(token);
-    if (date === undefined) { return false; }
+    if (date === undefined) {
+      return false;
+    }
     return !(date.valueOf() > new Date().valueOf());
   }
 
@@ -51,6 +61,8 @@ export class AuthService {
     this.client.post<LoginResult>(this.url, {name, password}).subscribe((result: LoginResult) => {
       this.setToken(result.token);
       this.userService.setUserName(result.response);
+      this.router.navigate(['/first-page']);
+
     }, error => {
       console.log(error.error);
       window.alert(error.error);
