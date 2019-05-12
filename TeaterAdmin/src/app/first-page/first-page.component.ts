@@ -22,10 +22,7 @@ export class FirstPageComponent implements OnInit {
 
   }
 
-
   ngOnInit() {
-
-
   }
 
   getUserName() {

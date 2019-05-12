@@ -6,7 +6,7 @@ import {UserService} from '../user.service';
 export const TOKEN_NAME = 'jwt_token';
 
 interface LoginResult {
-  response: string,
+  response: string
   token?: string;
 }
 
@@ -56,9 +56,6 @@ export class AuthService {
       window.alert(error.error);
     });
   }
-
-
-
 }
 
 
