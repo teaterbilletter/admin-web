@@ -29,7 +29,7 @@ import {Params} from '@angular/router';
 @Injectable({providedIn : 'root'})
 export class AdministratorService {
 
-    protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com/';
+    protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

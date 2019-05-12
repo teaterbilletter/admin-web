@@ -26,7 +26,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({providedIn : 'root'})
 export class CustomerService {
 
-    protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com/';
+    protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
