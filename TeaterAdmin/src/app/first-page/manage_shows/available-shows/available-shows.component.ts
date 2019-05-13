@@ -52,7 +52,8 @@ export class AvailableShowsComponent implements OnInit {
       }
     }
     this.dates = this.tempdates;
-    this.adminService.deleteShowDates(this.show.id, showDate);
+    console.log('Date in string format: ' + this.datepipe.transform(showDate, 'yyyy-MM-dd HH:mm:ss'));
+    this.adminService.deleteShowDates(this.show.id, new Date(this.datepipe.transform(showDate, 'yyyy-MM-dd HH:mm:ss')));
   }
 
 

@@ -29,7 +29,7 @@ import {Params} from '@angular/router';
 @Injectable({providedIn : 'root'})
 export class AdministratorService {
 
-    protected basePath = 'https://disttickets.northeurope.cloudapp.azure.com';
+    protected basePath = 'http://localhost:5000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -103,13 +103,9 @@ export class AdministratorService {
             queryParameters = queryParameters.append('id', id as any);
         }
         if (dateTime !== undefined && dateTime !== null) {
-            queryParameters = queryParameters.append('dateTime', this.datepipe.transform(dateTime, 'yyyy-MM-dd hh:mm:ss') as any);
+            queryParameters = queryParameters.append('dateTime', this.datepipe.transform(dateTime, 'yyyy-MM-dd HH:mm:ss') as any);
         }
-        console.log(id + ' ' + this.datepipe.transform(dateTime, 'yyyy-MM-dd hh:mm:ss'));
-        console.log(queryParameters.get('id') + ' - ' + queryParameters.get('dateTime'));
         this.httpClient.delete(this.basePath.concat('/ShowDates/'), {params: queryParameters}).subscribe(result => console.log(result));
-
-
     }
 
 
